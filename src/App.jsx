@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
 
-import Anjoman from "./pages/Anjoman";
+import Anjoman from "./Pages/Anjoman";
 import Home from "./Pages/Home";
 import Layout from "./Ui/Layout";
 import Sign from "./Pages/Sign";
