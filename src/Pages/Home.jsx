@@ -19,7 +19,7 @@ export default function Home() {
       <section className="justify-center items-center lg:items-start grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         <FaqSlider />
         <CareerPath />
-        <div className="flex lg:flex-col justify-center items-center gap-4 md:col-span-2 lg:col-span-1 mb-62">
+        <div className="flex flex-col justify-center items-center gap-4 md:col-span-2 lg:col-span-1 mb-62">
 <img src="./assets/f4.png" className="max-w-54 md:max-w-[370px] h-auto object-contain" />
 <img src="./assets/frontend_4.png" className="max-w-54 md:max-w-[370px] h-auto object-contain" />
         </div>
