@@ -2,12 +2,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
-import Login from "./pages/Login";
+
 import Anjoman from "./pages/Anjoman";
 import Home from "./Pages/Home";
 import Layout from "./Ui/Layout";
 import Sign from "./Pages/Sign";
 import Project from "./Pages/Project";
+import Login from './Pages/Login';
 
 function App() {
   return (
