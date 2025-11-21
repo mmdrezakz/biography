@@ -24,7 +24,7 @@ const Project = () => {
   if (loading) return <p className="text-zinc-500 text-center">در حال بارگذاری پروژه‌ها...</p>;
 
   return (
-    <div className="gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 m-10 mx-6 md:mx-20">
+    <div className="gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-6 md:mx-20 mt-10">
       {repos.map((repo) => (
         <div
           key={repo.id}
