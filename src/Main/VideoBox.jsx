@@ -19,15 +19,17 @@ export default function VideoBox() {
         <h2 className="mb-4 font-vazir font-semibold text-gray-700 text-xl">
         🎥 سایت فیلم طراحی شده
         </h2>
-         <div className="relative shadow-md pb-[56.25%] rounded-lg w-full h-0 overflow-hidden">
-            <iframe
+         <div className="relative shadow-md pb-[56.25%] rounded-lg w-full overflow-hidden">
+            <video
+            loading="lazy"
           className="top-0 left-0 absolute w-full h-full"
           src="/assets/film/1f.mp4"
-          title="Demo Video"
-          frameBorder="0"
+          title="website video "
+          controls
+          preload="metadata"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
-        ></iframe>
+        ></video>
       </div>
     </section>
           </motion.div>

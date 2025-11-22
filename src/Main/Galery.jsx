@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import { motion } from 'framer-motion';
+import BounceLoader from 'react-spinners/esm/BounceLoader';
+
+
 
 const galery =[
    {
@@ -36,6 +39,8 @@ rows:2
   }
 ]
 export default function Galery() {
+    const [loading, setLoading] = useState(true);
+
   return (
           <div className="col-span-2 bg-gray-400 mx-6 my-5 rounded-lg">
                   <motion.div    
@@ -62,12 +67,20 @@ export default function Galery() {
         rows={item.rows || 1}
         cols={item.cols || 1}
       >
+        {loading && ( <div className="absolute inset-0 flex justify-center items-center bg-gray-400">
+          <BounceLoader color="#36d7b7" size={60} />
+        </div>
+          )}
         <img
           src={item.src}
           alt={item.title}
           loading="lazy"
-          className="w-full h-full object-contain"
+          className={`w-full h-full object-cover transition-opacity duration-500 ${loading ? "opacity-0" :"opacity-100"}`}
+          onLoad={() => setTimeout(() => setLoading(false), 1000)} // کمی تأخیر
+          onError={() => setLoading(false)}
+
         />
+
       </ImageListItem>
     ))}
   </ImageList>

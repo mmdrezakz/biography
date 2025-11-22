@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaGithub, FaStar, FaCodeBranch } from "react-icons/fa";
+import BounceLoader from "react-spinners/esm/BounceLoader";
 
 const Project = () => {
   const [repos, setRepos] = useState([]);
@@ -21,7 +22,7 @@ const Project = () => {
     fetchRepos();
   }, []);
 
-  if (loading) return <p className="text-zinc-500 text-center">در حال بارگذاری پروژه‌ها...</p>;
+  if (loading) return <div className="flex justify-center items-center mt-18"><BounceLoader size={"100px"}  /></div>;
 
   return (
     <div className="gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-6 md:mx-20 mt-10 pb-8">

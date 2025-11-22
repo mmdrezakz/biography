@@ -23,7 +23,10 @@ export default function Layout() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      setScrolled(scrollY > 20); // اگر بیشتر از ۱۰ پیکسل اسکرول شد
+console.log(scrollY);
+
+      
+      setScrolled(scrollY > 2000); // اگر بیشتر از ۱۰ پیکسل اسکرول شد
     };
 
     window.addEventListener("scroll", handleScroll);
