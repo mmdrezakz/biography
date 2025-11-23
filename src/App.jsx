@@ -1,5 +1,8 @@
 // App.jsx
+
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import Anjoman from "./Pages/Anjoman";
 import { lazy, Suspense } from "react";
 import Layout from "./Ui/Layout";
@@ -15,9 +18,12 @@ import BounceLoader from './../node_modules/react-spinners/esm/BounceLoader';
 
 function App() {
   return (
+
+
     <Router>
       <Suspense fallback={<div className="flex justify-center items-center w-screen h-screen"><BounceLoader size={"100px"}  /></div>}>
       <Routes>
+        
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
@@ -29,6 +35,7 @@ function App() {
       </Routes>
       </Suspense>
     </Router>
+
   );
 }
 

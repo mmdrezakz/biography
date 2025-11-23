@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { supabase } from "../SupabaseClient";
+import { MoonLoader } from "react-spinners";
 
 export default function Sign() {
   const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ export default function Sign() {
     lastName: "",
     username: "",
   });
+  const [isLoading,setIsLoading] = useState(false)
 
   const navigate = useNavigate();
 
@@ -24,7 +26,7 @@ export default function Sign() {
 
 const handleSignup = async (e) => {
   e.preventDefault();
-
+  setIsLoading(true)
   const { email, password, firstName, lastName, username } = formData;
 
   // ثبت‌نام در Supabase
@@ -41,10 +43,11 @@ const handleSignup = async (e) => {
   });
 
   if (signUpError) {
+    setIsLoading(false)
     alert("❌ خطا در ثبت‌نام: " + signUpError.message);
     return;
   }
-
+  setIsLoading(false)
   alert("✅ ثبت‌نام موفق! لطفاً ایمیلت رو تأیید کن.");
   navigate("/login");
 };
@@ -100,8 +103,11 @@ const handleSignup = async (e) => {
               ورود
             </Link>
           </div>
-          <button type="submit" className="bg-gray-200 py-2 rounded w-full">
-            ثبت نام
+          <button type="submit" disabled={isLoading} className="bg-gray-200 py-2 rounded w-full">
+    {isLoading ? <p className="flex justify-center items-center gap-5">
+      <MoonLoader color="black" size={24} />
+      <p>درحال ثبت نام </p>
+    </p> : <p>ثبت نام </p>}
           </button>
         </form>
       </div>

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Jadval from "./Jadval";
 
 const faqs = [
   {
@@ -32,7 +33,7 @@ export default function FaqSlider() {
 
   return (
     <div className="relative mx-auto px-4 py-8 w-full max-w-xl">
-            <div className="right-30 bottom-10 z-10 absolute opacity-20">
+            <div className="top-0 right-30 z-10 absolute opacity-20">
         <img  src="./assets/f5.png"></img>
       </div>
       <div className="flex justify-between items-center bg-gray-400 mb-4 p-2">
@@ -54,6 +55,8 @@ export default function FaqSlider() {
         <p className="font-vazir text-gray-900 text-sm">{faqs[current].answer}</p>
       </motion.div>
 
+
+    <Jadval />
     </div>
   );
 }

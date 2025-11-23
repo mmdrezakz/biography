@@ -26,7 +26,7 @@ export default function Layout() {
 console.log(scrollY);
 
       
-      setScrolled(scrollY > 2000); // اگر بیشتر از ۱۰ پیکسل اسکرول شد
+      setScrolled(scrollY > 800); // اگر بیشتر از ۱۰ پیکسل اسکرول شد
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -84,7 +84,22 @@ console.log(scrollY);
 
       {/* محتوای متغیر صفحات */}
       <Outlet context={{ darkmode, setdarkmode }} />
-      {isHome && scrolled &&   <Footer darkmode={darkmode} /> }
+
+
+      {isHome && scrolled &&                 <motion.div    
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1, }}
+                  
+                  transition={{
+                    
+                  duration: 0.8,
+                  delay: 0.5,
+                  ease: [0, 0.71, 0.2, 1.01],
+                  }}
+                >
+                    <Footer darkmode={darkmode} />
+                    </motion.div> }
+                
       
     </div>
   );

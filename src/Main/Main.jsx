@@ -11,7 +11,7 @@ export default function Main() {
     <>
     <section className='mx-4 my-5 p-2'>
       <main>
-        <div className='bg-gray-400 shadow-gray-500 shadow-sm p-5 rounded-sm min-h-[74vh] font-Vazirmatn text-gray-800 text-justify'>
+        <div className='bg-gray-400 shadow-gray-500 shadow-sm md:p-5 rounded-sm min-h-[74vh] font-Vazirmatn text-gray-800 text-justify'>
           <motion.div    
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}

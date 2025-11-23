@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../SupabaseClient';
 import emailjs from "emailjs-com"; // ✅ درست
-
+import {MoonLoader} from "react-spinners"
 export default function Anjoman() {
   const [email, setEmail] = useState('');
   const [question, setQuestion] = useState('');
   const [status, setStatus] = useState(null);
 const [questionsList, setQuestionsList] = useState([]);
-
+  const [isLoading,setIsLoading] = useState(false)
 
 useEffect(() => {
   const fetchQuestions = async () => {
@@ -61,7 +61,9 @@ setQuestionsList((prev) => [data, ...prev]);
   }
 
   // ارسال ایمیل فقط بعد از ذخیره موفق
+
   try {
+    setIsLoading(true)
     await emailjs.send("service_fp52mhm", "template_nwcwbna", {
   email: email,
   question: question
@@ -73,6 +75,7 @@ setQuestionsList((prev) => [data, ...prev]);
   setStatus({ type: 'success', message: 'سؤال با موفقیت ارسال شد!' });
   setEmail('');
   setQuestion('');
+  setIsLoading(false)
 };
 return (
   <div className="flex lg:flex-row flex-col justify-center items-start gap-8 mx-auto p-6 w-full max-w-6xl">
@@ -133,17 +136,20 @@ return (
         />
       </div>
 
-      <button
+      <button 
+      disabled={isLoading}
         type="submit"
         className="bg-indigo-500 hover:bg-indigo-600 py-2 rounded w-full font-semibold text-white transition duration-200"
       >
-        ارسال
+        {isLoading ?<p className='flex justify-center items-center gap-5'>
+          <p>در حال ارسال</p> <MoonLoader color='white' size={28} />   
+        </p> :<p>ارسال</p> }
       </button>
 
       {status && (
         <div
-          className={`text-sm text-center mt-2 ${
-            status.type === 'success' ? 'text-green-600' : 'text-red-600'
+          className={`text-sm text-center mt-2 text-slate-950 py-1 ${
+            status.type === 'success' ? 'bg-yellow-300' : 'bg-red-400'
           }`}
         >
           {status.message}

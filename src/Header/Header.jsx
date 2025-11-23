@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import  "/assets/bg3.png"
 import { ButtonGroup } from '@mui/material';
 import { Button } from '@mui/material';
@@ -18,7 +18,7 @@ setdarkmode,
 mount,
 setmount}) {
 
-    
+      const [scrolled, setScrolled] = useState(false);
 // darkmode
 useEffect(() => {
   document.documentElement.classList.toggle("dark",darkmode)
@@ -31,6 +31,16 @@ useEffect(() => {
 
   return () => clearTimeout(timeout);
 }, []);
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+console.log(scrollY);
+setScrolled(scrollY > 10); // اگر بیشتر از ۱۰ پیکسل اسکرول شد
+    }
+          window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  });
 //هندل کردن مود دارک
 function DarkHandler(){
   setdarkmode(!darkmode)
@@ -54,11 +64,11 @@ function DarkHandler(){
         ease: [0, 0.71, 0.2, 1.01],
             }}
         >
+        {scrolled && <Darkmode mount={mount} darkmode={darkmode} DarkHandler={DarkHandler}/>}
 
-          <Darkmode mount={mount} darkmode={darkmode} DarkHandler={DarkHandler}/>
           <NavBar darkmode={darkmode} />
       </motion.div>
-        <div id="img-person" >
+        <div id="img-person" className='hidden md:block' >
           <img className="brightness-110 contrast-125" src="./assets/bg3.png"></img>
         </div>
         <SkillsHeader/>

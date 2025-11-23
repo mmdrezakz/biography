@@ -29,7 +29,7 @@ const steps = [
 
  export default function CareerPath() {
   return (
-    <div className="mx-auto lg:mb-62 px-4 py-8 max-w-2xl font-vazir">
+    <div className="mx-auto px-4 py-8 max-w-2xl font-vazir">
       <h2 className="mb-6 font-bold text-blue-600 dark:text-blue-400 text-2xl text-center">
         مسیر حرفه‌ای من
       </h2>
